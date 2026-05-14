@@ -2,13 +2,15 @@ name: demo github actions
 on: [push]
 jobs:
   Discover-GitHub-Actions-Workflows:
-  runs-on: ubuntu-latest
-  steps:
-    - run: echo "${{github.event.name}} event automatically triggered this job"
-    - run: echo "A ${{runner.os}} server has this hsoted by Github"
-    -run: echo "${{github.repository}} is updated.Updated branch name is ${{github.ref}}"
-    -uses : actions/checkout@v3
-    -run : echo "the runner has cloned ${{github.repository}} repository"
-      
-
-
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{github.event_name}} event automatically triggered this job"
+      - run: echo "A ${{runner.os}} server has this hosted by Github"
+      - run: echo "${{github.repository}} is updated.Updated branch name is ${{github.ref}}"
+      - uses: actions/checkout@v3
+      - run: echo "the runner has cloned ${{github.repository}} repository"
+      - uses: actions/checkout@v3
+      - run: echo "The runner has closed the ${{github.repository}} repository"
+      -run: ls -l ${{github.workspace}}
+      -run: echo "Push status = ${{job.status}}"
+       
